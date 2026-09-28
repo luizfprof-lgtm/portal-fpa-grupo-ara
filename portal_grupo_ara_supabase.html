@@ -490,6 +490,15 @@
                 </div>
             </div>
 
+            <!-- Power BI Iframes -->
+            <div id="iframe-agricola" class="report-container" style="display: none;">
+                <iframe title="Projeto FP&A - AGRICOLA" width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiZGQ1YTA4ODItOWM5NC00MTdlLTg3NTQtOTcwOGY5ODk5NTliIiwidCI6IjZmMTZmMjUzLTcwNTQtNDcwZC05YTc3LTFmMTM3MjQwMGNhMSJ9" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+
+            <div id="iframe-textil" class="report-container" style="display: none;">
+                <iframe title="Projeto FP&A - TEXTIL" width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiODhjZmYyMzQtMGMzMy00ODEwLTk3ZjItN2Q1ZjNkZWU3NWU4IiwidCI6IjZmMTZmMjUzLTcwNTQtNDcwZC05YTc3LTFmMTM3MjQwMGNhMSJ9" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+
             <!-- Auditoria Content -->
             <div id="auditContent" class="report-container" style="display: none;">
                 <div class="content-header">
@@ -672,6 +681,18 @@
 
     // Função: Selecionar Empresa
     function selectEmpresa(empresa) {
+        // Esconder todos os iframes Power BI
+        document.querySelectorAll('[id^="iframe-"]').forEach(el => {
+            el.style.display = 'none';
+        });
+        
+        // Mostrar o iframe selecionado
+        if (empresa === 'agricola') {
+            document.getElementById('iframe-agricola').style.display = 'block';
+        } else if (empresa === 'textil') {
+            document.getElementById('iframe-textil').style.display = 'block';
+        }
+        
         updateBreadcrumb();
     }
 
